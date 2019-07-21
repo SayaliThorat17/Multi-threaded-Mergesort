@@ -3,11 +3,9 @@
  */
 package multiThreadedHS.driver;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import multiThreadedHS.util.FileProcessor;
+import multiThreadedHS.threads.ThreadWorker;
 
 /**
  * @author sayali
@@ -21,14 +19,83 @@ public class Driver {
 	public static void main(String[] args) throws FileNotFoundException, IOException{
 		// TODO Auto-generated method stub
 
-		int arguments = args.length;
+		
+		
+		int NumOfThreads= Integer.parseInt(args[0]);
+
+		
+		if(NumOfThreads == 3) {
+			
+			String inputFile1 =args[1];
+			String inputFile2=args[2];
+			String inputFile3=args[3];
+			
+			ThreadWorker twobj = new ThreadWorker(inputFile1,inputFile2,inputFile3);
+			twobj.createT(NumOfThreads);
+			
+		}
+		else if(NumOfThreads == 2) {
+			
+			String input1 =args[1];
+			String input2=args[2];
+		
+			ThreadWorker twobj = new ThreadWorker(input1,input2,null);
+			twobj.createT(NumOfThreads);
+		}
+		else if(NumOfThreads == 1) {
+			
+			String inputF1 =args[1];
+			
+			ThreadWorker twobj = new ThreadWorker(inputF1,null,null);
+			twobj.createT(NumOfThreads);
+		}
+		else{
+			
+			System.out.println("Invalid number of Input Files");
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		 * 
+		 * 
+		 * 
+		 * int arguments = args.length;
 		
 		System.out.println("Number of arguments passed are : "+arguments);
 		
-		
-		/*String inputFile1 =args[0];
-		String inputFile2=args[1];
-		String inputFile3 = args[2];
+		int NumberOfThreads= Integer.parseInt(args[0]);
+		String inputFile1 =args[1];
+		String inputFile2=args[2];
+		String inputFile3 = args[3];
 		
 		FileProcessor fpobj = new FileProcessor();
 		String[] filenames = new String[] {inputFile1,inputFile2,inputFile3};
@@ -46,7 +113,12 @@ public class Driver {
 			}
 			System.out.println("End reading file : "+fileName);
 		}
-		 	*/
+		
+		
+		
+		
+		 	
+		//////////
 		
 		FileProcessor fpobj = new FileProcessor();
 		
@@ -127,6 +199,7 @@ public class Driver {
 				System.out.println("Please enter correct arguments :");
 		}
 		
+		*/
 		
 		
 	}
