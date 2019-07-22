@@ -1,24 +1,31 @@
 /**
  * 
  */
-package multiThreadedHS.threads;
+package multiThreadedMS.threads;
 
 import java.io.BufferedReader;
+import java.util.ArrayList;
 
-import multiThreadedHS.util.FileProcessor;
+
+import multiThreadedMS.util.FileProcessor;
+import multiThreadedMS.util.MergeSort;
+import multiThreadedMS.util.Results;
 
 /**
  * @author sayali
  *
  */
-/*public class ThreadWorker implements Runnable{
+public class ThreadWorker implements Runnable{
+
 	
 	private String fileName =null;
-	//private String input2 =null;
 	
-	public ThreadWorker(String inputFile) {
+	Results robj;
+	
+	public ThreadWorker(String inputFile, Results robj) {
 		
 		this.fileName = inputFile;
+		this.robj = robj;
 		
 	}
 
@@ -31,19 +38,35 @@ import multiThreadedHS.util.FileProcessor;
 			
 			FileProcessor fpobj = new FileProcessor();
 			
+		//	Results robj = new Results(output);
+			
+			
 			BufferedReader br1 = fpobj.OpenFile(fileName);
+			ArrayList<Integer> list = new ArrayList<Integer>();
+			ArrayList<Integer> fullList = new ArrayList<Integer>();
+			
 			String line = fpobj.readLine(br1);
+			
 			System.out.println("\nStart reading file : "+fileName);
 				
 			while (line != null) {
+			
+				list.add(Integer.parseInt(line));
 				System.out.println(line);
 				line = fpobj.readLine(br1);
 					
 			}
 				
 			System.out.println("End reading file : "+fileName);
+			System.out.println(list);
+			MergeSort msobj = new MergeSort(list);
+			msobj.sortGivenArray();
+			//System.out.println("hola : " + list);		//sorted list
+			fullList = robj.storeLine(list);
 			
-			
+			System.out.println("hola : " + fullList);		//sorted list
+			//MergeSort msobj1 = new MergeSort(fullList);
+			//msobj1.sortGivenArray();
 		}
 		catch (Exception e)
 		{
@@ -51,53 +74,5 @@ import multiThreadedHS.util.FileProcessor;
 		}
 		
 	}
-
-
-	
-
-} */
-
-public class ThreadWorker {
-	
-	private String input1 =null;
-	private String input2 =null;
-	private String input3 =null;
-	private String[] InputArr = new String[3];
-	
-	
-	
-	
-	public ThreadWorker(String inputFile1, String inputFile2, String inputFile3) {
-		
-		this.input1 = inputFile1;
-		this.input2 = inputFile2;
-		this.input3 = inputFile3;
-		
-		this.InputArr[0]= input1;
-		this.InputArr[1]= input2;
-		this.InputArr[2]= input3;
-	}
-	
-	
-
-	public void createT(int NumOfThreads) {
-	
-		for(int i=0; i < NumOfThreads; i++) {
-		
-			Thread obj = new Thread(new RunThreads(InputArr[i]));
-			obj.start();
-			
-			try 
-			{
-				obj.join();
-            } 
-			catch (InterruptedException ex) 
-			{
-					System.out.println("Exception for thread joining caught");
-            }
-		}
-	}
 }
-
-
-
+	

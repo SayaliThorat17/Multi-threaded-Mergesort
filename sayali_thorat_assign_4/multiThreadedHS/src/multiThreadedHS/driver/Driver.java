@@ -1,207 +1,112 @@
 /**
  * 
  */
-package multiThreadedHS.driver;
+package multiThreadedMS.driver;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import multiThreadedHS.threads.ThreadWorker;
+
+import multiThreadedMS.threads.ThreadWorker;
+import multiThreadedMS.util.Results;
 
 /**
  * @author sayali
- *this class is used to create all objects and to deal with command line arguments
+ *
  */
 public class Driver {
 
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) throws FileNotFoundException, IOException{
+	
+	
+public void createT(int NumOfThreads, String[] InputArr, Results robj) {
+		
+		for(int i=0; i < NumOfThreads; i++) {
+		
+			Thread obj = new Thread(new ThreadWorker(InputArr[i], robj), "obj_" + i);
+			obj.start();
+			
+			try 
+			{
+				obj.join();
+            } 
+			catch (InterruptedException ex) 
+			{
+					System.out.println("Exception for thread joining caught");
+            }
+		}
+	}
+	
+	
+	
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		try {
 
-		
-		
 		int NumOfThreads= Integer.parseInt(args[0]);
-
+		String[] InputArr = new String[3];
+		
+		
+		Driver dobj = new Driver();
 		
 		if(NumOfThreads == 3) {
 			
 			String inputFile1 =args[1];
 			String inputFile2=args[2];
 			String inputFile3=args[3];
+			String outputFile = args[4];
 			
-			ThreadWorker twobj = new ThreadWorker(inputFile1,inputFile2,inputFile3);
-			twobj.createT(NumOfThreads);
+			InputArr[0]= inputFile1;
+			InputArr[1]= inputFile2;
+			InputArr[2]= inputFile3;
+			
+			Results obj = new Results(outputFile);
+			dobj.createT(NumOfThreads, InputArr,obj);
+			
+			
 			
 		}
 		else if(NumOfThreads == 2) {
 			
-			String input1 =args[1];
-			String input2=args[2];
-		
-			ThreadWorker twobj = new ThreadWorker(input1,input2,null);
-			twobj.createT(NumOfThreads);
+			String inputFile1 =args[1];
+			String inputFile2=args[2];
+			String outputFile = args[3];
+			
+			InputArr[0]= inputFile1;
+			InputArr[1]= inputFile2;
+			InputArr[2]= null;
+			
+			Results obj = new Results(outputFile);
+			dobj.createT(NumOfThreads, InputArr,obj);
+			
+			
 		}
 		else if(NumOfThreads == 1) {
 			
-			String inputF1 =args[1];
+			String inputFile1 =args[1];
+			String outputFile = args[2];
 			
-			ThreadWorker twobj = new ThreadWorker(inputF1,null,null);
-			twobj.createT(NumOfThreads);
+
+			InputArr[0]= inputFile1;
+			InputArr[1]= null;
+			InputArr[2]= null;
+			
+			Results obj = new Results(outputFile);
+			dobj.createT(NumOfThreads, InputArr,obj);
+			
+			
 		}
 		else{
 			
-			System.out.println("Invalid number of Input Files");
+			System.out.println("Missing Input or Output File or Debug Value");
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*
-		 * 
-		 * 
-		 * 
-		 * int arguments = args.length;
-		
-		System.out.println("Number of arguments passed are : "+arguments);
-		
-		int NumberOfThreads= Integer.parseInt(args[0]);
-		String inputFile1 =args[1];
-		String inputFile2=args[2];
-		String inputFile3 = args[3];
-		
-		FileProcessor fpobj = new FileProcessor();
-		String[] filenames = new String[] {inputFile1,inputFile2,inputFile3};
-		
-		for(String fileName: filenames) {
-			
-			BufferedReader br1 = fpobj.OpenFile(fileName);
-			String line = fpobj.readLine(br1);
-			System.out.println("\nStart reading file : "+fileName);
-			while (line != null) {
-				System.out.println(line);
-				line = fpobj.readLine(br1);
-				//System.out.println(line);
-				
-			}
-			System.out.println("End reading file : "+fileName);
-		}
-		
-		
-		
-		
-		 	
-		//////////
-		
-		FileProcessor fpobj = new FileProcessor();
-		
-		switch(arguments) {
-		
-		case 6 :
-				//String numberArgs =args[0];	
-				String inputFile1 =args[1];
-				String inputFile2=args[2];
-				String inputFile3 = args[3];
-				System.out.println("6 Number of args are : "+arguments);
-				
-				String[] filenames1 = new String[] {inputFile1,inputFile2,inputFile3};
-		
-				for(String fileName: filenames1) {
-			
-					BufferedReader br1 = fpobj.OpenFile(fileName);
-					String line = fpobj.readLine(br1);
-					System.out.println("\nStart reading file : "+fileName);
-					while (line != null) {
-						System.out.println(line);
-						line = fpobj.readLine(br1);
-						//System.out.println(line);
-				
-					}
-					System.out.println("End reading file : "+fileName);
-				}
-		
-				break;
-				
-		case 5 :
-				//String nArgs =args[0];
-				String input1 =args[1];
-				String input2=args[2];
-				System.out.println("5 Number of args are : "+arguments);
-				
-				String[] filenames2 = new String[] {input1,input2};
-		
-				for(String fileName: filenames2) {
-			
-					BufferedReader br1 = fpobj.OpenFile(fileName);
-					String line = fpobj.readLine(br1);
-					System.out.println("\nStart reading file : "+fileName);
-					while (line != null) {
-						System.out.println(line);
-						line = fpobj.readLine(br1);
-						//System.out.println(line);
-				
-					}
-					System.out.println("End reading file : "+fileName);
-				}
-				break;
-				
-				
-		case 4 :
-				//String number =args[0];
-				String inputF1 =args[1];
-				System.out.println("4 Number of args are : "+arguments);
-				
-				String[] filenames3 = new String[] {inputF1};
-		
-				for(String fileName: filenames3) {
-			
-					BufferedReader br1 = fpobj.OpenFile(fileName);
-					String line = fpobj.readLine(br1);
-					System.out.println("\nStart reading file : "+fileName);
-					while (line != null) {
-						System.out.println(line);
-						line = fpobj.readLine(br1);
-						//System.out.println(line);
-				
-					}
-					System.out.println("End reading file : "+fileName);
-				}
-				break;
-				
-		default :
-				System.out.println("Please enter correct arguments :");
-		}
-		
-		*/
-		
-		
+	 
+	}	//try
+	catch (Exception e)
+	{
+		System.out.println("Exception for main caught : Invalid number of Arguments");
 	}
-
+	
+	}	//main
 }
