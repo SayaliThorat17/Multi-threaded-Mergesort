@@ -33,7 +33,7 @@ public class MergeSort {
 	    public void sortGivenArray(){  
 	    	
 	        divide(0, this.inputArray.size()-1);
-	        MyLogger.writeMessage("Merge Sorting is called", DebugLevel.MergeSort);
+	        MyLogger.writeMessage("Merge Sorting is called", DebugLevel.MERGESORT);
 	        
 	        
 	    }
