@@ -1,15 +1,16 @@
 /**
  * 
  */
-package multiThreadedHS.util;
+package multiThreadedMS.util;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
-import multiThreadedHS.util.MyLogger;
-import multiThreadedHS.util.MyLogger.DebugLevel;
+import multiThreadedMS.util.MyLogger;
+import multiThreadedMS.util.MyLogger.DebugLevel;
 
 /**
  * @author sayali
@@ -21,10 +22,16 @@ public class Results {
 	    private String outputFileName;
 	    private File fileWriter;
 	    
+	    public ArrayList<Integer> FullArrList  = new ArrayList<Integer>();		//arraylist
+	   // ArrayList< ArrayList<Integer> > FullArrList =  new ArrayList< ArrayList<Integer> >();
+	    
 	    public Results(String outfilename)  {
 			// TODO Auto-generated constructor stub
 	    	outputFileName=outfilename;
 	    	fileWriter = new File(outputFileName);
+	    	
+	    	//FullArrList = new ArrayList();		//
+	    	
 	    	MyLogger.writeMessage("Results Contructor is called.", DebugLevel.CONSTRUCTOR);
 
 	        // Create file
@@ -43,6 +50,15 @@ public class Results {
 				e.printStackTrace();
 			}
 		}
+	    
+	    
+	   public synchronized ArrayList<Integer> storeLine(ArrayList<Integer> list) {
+	    	FullArrList.addAll(list); //getting stored into the arrayList
+	    	System.out.println("store line :" + FullArrList);
+	    	return FullArrList;
+	    	
+	    } 
+	    
 	    
 	    /*
 	     * This is used to print the output on commandline

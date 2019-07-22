@@ -1,7 +1,7 @@
 /**
  * 
  */
-package multiThreadedHS.util;
+package multiThreadedMS.util;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -35,7 +35,7 @@ private String fileName;
 	/*
 	 * method to read a single line from input file
 	 */
-	public String readLine(BufferedReader br) {
+	public synchronized String readLine(BufferedReader br) {
 		String line="";
 		try {
 			line = br.readLine();
