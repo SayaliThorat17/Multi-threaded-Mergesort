@@ -16,9 +16,13 @@ public class FileProcessor {
 
 private String fileName;
 	
-	/**
-	 * method to open input file
-	 */
+
+/**
+ * method to open input file
+ * @param fileName : inputfile name
+ * @return br : bufferedReader
+ * @throws FileNotFoundException : if error while opening file
+ */
 	public BufferedReader OpenFile(String fileName) throws FileNotFoundException {
 		BufferedReader br;
 		
@@ -32,12 +36,15 @@ private String fileName;
 	
 	/**
 	 * method to read a single line from input file
+	 * @param br : BufferedReader
+	 * @return line :  reading single line of file
 	 */
 	public synchronized String readLine(BufferedReader br) {
 		String line="";
 		try {
 			line = br.readLine();
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			
 			System.err.print("Error Reading file");
 			e.printStackTrace();
@@ -45,8 +52,11 @@ private String fileName;
 			return line;
 	}
 	
+	
 	/**
-	 * method to close inputfile
+	 * method to close file
+	 * @param br : BufferedReader
+	 * @throws IOException : Exception thrown if error occurs while closing file
 	 */
 	public void closeFile(BufferedReader br) throws IOException {
 		br.close();

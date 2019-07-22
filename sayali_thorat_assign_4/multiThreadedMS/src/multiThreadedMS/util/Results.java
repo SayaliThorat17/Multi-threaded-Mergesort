@@ -28,8 +28,8 @@ public class Results {
 	    
 	    
 	    /**
-	     * 
-	     * @param outfilename
+	     * Results to write to output file
+	     * @param outfilename : name of output file
 	     */
 	    public Results(String outfilename)  {
 			// TODO Auto-generated constructor stub
@@ -60,8 +60,8 @@ public class Results {
 	    /**
 	     * StoreFunction 
 	     * ArrayList is synchronized for threads to give proper output for shared ArrayList 
-	     * @param list
-	     * @return FullArrList
+	     * @param list : arraylist is used to take input of short sorted arraylist passed by each thread
+	     * @return FullArrList : Shared ArrayList between threads to store data
 	     */
 	   public synchronized ArrayList<Integer> storeLine(ArrayList<Integer> list) {
 		   
@@ -88,7 +88,7 @@ public class Results {
 	    
 	    /**
 	     * This is used to print the output on commandline
-	     * @param string s : which will be printed
+	     * @param s : string which will be printed on screen
 	     */
 		public void writeToStdout( String s)
 		{
@@ -98,7 +98,7 @@ public class Results {
 		
 		/**
 		 * This is used to write results to file
-		 * @param text
+		 * @param text : writing string to the output file
 		 */
 		public void writeToFile(String text)
 	    {
@@ -123,7 +123,7 @@ public class Results {
 		
 		/**
 		 * Function to close the output file
-		 * @throws IOException
+		 * @throws IOException : if error occurs while closing file
 		 */
 		public void closeFile() throws IOException {
 			bw.close();

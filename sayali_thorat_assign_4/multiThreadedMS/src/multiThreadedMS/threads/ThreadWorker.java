@@ -25,8 +25,8 @@ public class ThreadWorker implements Runnable{
 	
 	/**
 	 * Constructor of class ThreadWorker
-	 * @param inputFile
-	 * @param robj
+	 * @param inputFile : InputFile which is currently being read
+	 * @param robj : Results instance
 	 */
 	public ThreadWorker(String inputFile, Results robj) {
 		
@@ -56,15 +56,27 @@ public class ThreadWorker implements Runnable{
 				
 			while (line != null) {
 			
-				list.add(Integer.parseInt(line));
-				//System.out.println(line);
-				line = fpobj.readLine(br1);
+				int num = Integer.parseInt(line);
+				
+				/**
+				 * Validation to check if input file contains number between 10000 to 99999
+				 * if there is such element omit it and continue further
+				 */
+				if(num<10000 || num>99999) {
 					
+					//System.out.println("\nInput file should have 5 digit numbers from 10000 to 99999");	
+					System.out.println("\nElement "+num+" omitted from inputfile " + fileName +" as elements should be between 10000 to 99999\n");
+					line = fpobj.readLine(br1);
+				
+				}
+				else {
+					list.add(Integer.parseInt(line));
+					line = fpobj.readLine(br1);
+				}
 			}
 				
 			//System.out.println("End reading file : "+fileName);
-			//System.out.println(list);
-			
+
 			MergeSort msobj = new MergeSort(list);		//MergeSort is called for individual arraylist
 			msobj.sortGivenArray();
 			fullList = robj.storeLine(list);

@@ -1,9 +1,4 @@
-/**
- * 
- */
 package multiThreadedMS.driver;
-
-
 import multiThreadedMS.threads.ThreadWorker;
 import multiThreadedMS.util.Results;
 import multiThreadedMS.util.MyLogger.DebugLevel;
@@ -15,17 +10,19 @@ import multiThreadedMS.util.MyLogger;
  */
 public class Driver {
 	
-	
-/**
- * This function is used to create threads based on the value of N provided.
- * Also thread's execution is started here. 
- */
-public void createT(int NumOfThreads, String[] InputArr, Results robj) {
+	/**
+	 * This function is used to create threads based on the value of N provided.
+	 * Also thread's execution is started here. 
+	 * @param NumOfThreads : depending on value of N
+	 * @param InputArr : Array of input files
+	 * @param robj : Results instance
+	 */
+	public void createT(int NumOfThreads, String[] InputArr, Results robj) {
 		
 		for(int i=0; i < NumOfThreads; i++) {
 		
 			Thread obj = new Thread(new ThreadWorker(InputArr[i], robj), "obj_" + i);
-			MyLogger.writeMessage("Thread is created", DebugLevel.THREAD_CREATE);
+			MyLogger.writeMessage("Thread " + (i+1)+ " is created", DebugLevel.THREAD_CREATE);
 			obj.start();
 			
 			try 
@@ -50,9 +47,11 @@ public void createT(int NumOfThreads, String[] InputArr, Results robj) {
 		try {
 
 		int NumOfThreads= Integer.parseInt(args[0]);
-		
 		String[] InputArr = new String[3];
 		
+		
+		if(NumOfThreads<1 || NumOfThreads>3) 			//Validation for N to be between 1 to 3
+			System.out.println("Enter value of N between 1 to 3");
 		
 		Driver dobj = new Driver();
 		
@@ -96,8 +95,6 @@ public void createT(int NumOfThreads, String[] InputArr, Results robj) {
 			obj.writeToFile("Final Sorted Output is :\n ");
 			obj.print();
 			obj.closeFile();
-			
-			
 		}
 		
 		/**
@@ -165,7 +162,6 @@ public void createT(int NumOfThreads, String[] InputArr, Results robj) {
 			}
 			MyLogger.setDebugValue(debugValue);
 			
-			
 			/**
 			 * Result instance is created
 			 */
@@ -180,11 +176,6 @@ public void createT(int NumOfThreads, String[] InputArr, Results robj) {
 			obj.closeFile();
 			
 		}
-		else{
-			
-			System.out.println("Missing Input or Output File or Debug Value");
-		}
-		
 	 
 	}	//try
 	catch (Exception e)

@@ -20,7 +20,7 @@ public class MergeSort {
 	 
 	    /**
 	     * Constructor of MergeSort
-	     * @param inputArray
+	     * @param inputArray : An ArrayList to be sorted
 	     */
 	    public MergeSort(ArrayList<Integer> inputArray){
 	    	
@@ -33,7 +33,7 @@ public class MergeSort {
 	    public void sortGivenArray(){  
 	    	
 	        divide(0, this.inputArray.size()-1);
-	        MyLogger.writeMessage("Merge Sorting is called", DebugLevel.MERGESORT);
+	        MyLogger.writeMessage("MergeSort is called", DebugLevel.MERGESORT);
 	        
 	        
 	    }
