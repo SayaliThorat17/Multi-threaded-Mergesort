@@ -16,7 +16,7 @@ public class MyLogger {
 	  DEBUG_VALUE=3 [Print to stdout everytime the MergeSort is called.(Specified in MergeSort)]
 	  DEBUG_VALUE=2 [FIXME: Print to stdout everytime  you write results to file.(Specified in Results.java file)]
 	  DEBUG_VALUE=1 [FIXME: Print to stdout everytime thread is created.(Specified in Driver.java file)]
-	  DEBUG_VALUE=0 [No output should be printed from the applicatio to stdout. It is ok to write to the output file though" ]
+	  DEBUG_VALUE=0 [No output should be printed from the application to stdout. It is ok to write to the output file though" ]
 	*/
 
 	public static enum DebugLevel {RELEASE, THREAD_CREATE, IN_RESULTS, MERGESORT, CONSTRUCTOR , NONE

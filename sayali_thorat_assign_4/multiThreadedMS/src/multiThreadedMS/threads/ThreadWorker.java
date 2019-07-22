@@ -5,7 +5,7 @@ package multiThreadedMS.threads;
 
 import java.io.BufferedReader;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 
 import multiThreadedMS.util.FileProcessor;
 import multiThreadedMS.util.MergeSort;
@@ -65,7 +65,7 @@ public class ThreadWorker implements Runnable{
 				if(num<10000 || num>99999) {
 					
 					//System.out.println("\nInput file should have 5 digit numbers from 10000 to 99999");	
-					System.out.println("\nElement "+num+" omitted from inputfile " + fileName +" as elements should be between 10000 to 99999\n");
+					//System.out.println("\nElement "+num+" omitted from inputfile " + fileName +" as elements should be between 10000 to 99999\n");
 					line = fpobj.readLine(br1);
 				
 				}

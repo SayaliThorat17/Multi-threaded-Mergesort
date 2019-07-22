@@ -30,7 +30,7 @@ public class MergeSort {
 	    
 	    
 	    
-	    public void sortGivenArray(){  
+	    public synchronized void sortGivenArray(){  
 	    	
 	        divide(0, this.inputArray.size()-1);
 	        MyLogger.writeMessage("MergeSort is called", DebugLevel.MERGESORT);
