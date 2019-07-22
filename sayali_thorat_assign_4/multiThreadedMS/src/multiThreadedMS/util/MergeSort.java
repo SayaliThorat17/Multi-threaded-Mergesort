@@ -2,29 +2,38 @@
  * 
  */
 package multiThreadedMS.util;
-
 import java.util.ArrayList;
+import multiThreadedMS.util.MyLogger.DebugLevel;
 
 /**
  * @author sayali
- *
+ *MergeSort is implemented to sort the ArrayList
+ *Code citation for MergeSort : https://www.withexample.com/merge-sort-using-arraylist-java-example/
  */
 public class MergeSort {
+	
 	private ArrayList<Integer> inputArray;
-	private String output = null;
 	    
 	    public ArrayList<Integer> getSortedArray() {
 	        return inputArray;
 	    }
 	 
+	    /**
+	     * Constructor of MergeSort
+	     * @param inputArray
+	     */
 	    public MergeSort(ArrayList<Integer> inputArray){
+	    	
 	        this.inputArray = inputArray;
-	      //  this.output = output;
+	        MyLogger.writeMessage("MergeSort Contructor is called.", DebugLevel.CONSTRUCTOR);
 	    }
 	    
-	    public void sortGivenArray(){       
+	    
+	    
+	    public void sortGivenArray(){  
+	    	
 	        divide(0, this.inputArray.size()-1);
-	        System.out.println("heyz : "+inputArray);
+	        MyLogger.writeMessage("Merge Sorting is called", DebugLevel.MergeSort);
 	        
 	        
 	    }

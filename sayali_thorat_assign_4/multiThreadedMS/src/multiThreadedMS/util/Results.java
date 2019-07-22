@@ -23,8 +23,14 @@ public class Results {
 	    private File fileWriter;
 	    
 	    public ArrayList<Integer> FullArrList  = new ArrayList<Integer>();		//arraylist
-	   // ArrayList< ArrayList<Integer> > FullArrList =  new ArrayList< ArrayList<Integer> >();
+	    public String arr ;
+	    public ArrayList<String> Arr1  = new ArrayList<String>();
 	    
+	    
+	    /**
+	     * 
+	     * @param outfilename
+	     */
 	    public Results(String outfilename)  {
 			// TODO Auto-generated constructor stub
 	    	outputFileName=outfilename;
@@ -51,16 +57,36 @@ public class Results {
 			}
 		}
 	    
-	    
+	    /**
+	     * StoreFunction 
+	     * ArrayList is synchronized for threads to give proper output for shared ArrayList 
+	     * @param list
+	     * @return FullArrList
+	     */
 	   public synchronized ArrayList<Integer> storeLine(ArrayList<Integer> list) {
+		   
 	    	FullArrList.addAll(list); //getting stored into the arrayList
-	    	System.out.println("store line :" + FullArrList);
 	    	return FullArrList;
 	    	
 	    } 
+	   
+	   
+	   /**
+	    * Print function implemented to write results to file
+	    */
+	   public void print() {
+		   
+		   String line;
+		   
+		   for (Integer element : FullArrList) {
+	    	    //System.out.println(element);
+	    	    line = Integer.toString(element);
+	    	    writeToFile("\n" + line);
+	    	}
+		   
+	   }
 	    
-	    
-	    /*
+	    /**
 	     * This is used to print the output on commandline
 	     * @param string s : which will be printed
 	     */
@@ -70,7 +96,10 @@ public class Results {
 		}
 		
 		
-		
+		/**
+		 * This is used to write results to file
+		 * @param text
+		 */
 		public void writeToFile(String text)
 	    {
 			//System.out.println("Inside Write sToStdOut"+text);
@@ -90,6 +119,12 @@ public class Results {
 	                    e.printStackTrace();
 	            }
 	    }
+		
+		
+		/**
+		 * Function to close the output file
+		 * @throws IOException
+		 */
 		public void closeFile() throws IOException {
 			bw.close();
 		}

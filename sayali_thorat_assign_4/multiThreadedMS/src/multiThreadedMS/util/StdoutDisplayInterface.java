@@ -1,7 +1,7 @@
 /**
  * 
  */
-package multiThreadedHS.util;
+package multiThreadedMS.util;
 
 /**
  * @author sayali

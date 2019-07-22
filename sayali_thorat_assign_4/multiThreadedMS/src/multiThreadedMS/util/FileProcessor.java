@@ -14,11 +14,9 @@ import java.io.IOException;
  */
 public class FileProcessor {
 
-	
 private String fileName;
 	
-	
-	/*
+	/**
 	 * method to open input file
 	 */
 	public BufferedReader OpenFile(String fileName) throws FileNotFoundException {
@@ -32,7 +30,7 @@ private String fileName;
 	}
 	
 	
-	/*
+	/**
 	 * method to read a single line from input file
 	 */
 	public synchronized String readLine(BufferedReader br) {
@@ -40,13 +38,14 @@ private String fileName;
 		try {
 			line = br.readLine();
 		} catch (IOException e) {
+			
 			System.err.print("Error Reading file");
 			e.printStackTrace();
 		}
 			return line;
 	}
 	
-	/*
+	/**
 	 * method to close inputfile
 	 */
 	public void closeFile(BufferedReader br) throws IOException {
