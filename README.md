@@ -8,6 +8,7 @@ Citations :
 https://www.geeksforgeeks.org/java/
 https://stackoverflow.com/
 https://stackoverflow.com/questions/29339933/read-and-write-files-in-java-using-separate-threads
+https://www.tutorialspoint.com/java/java_multithreading
 
 Citation for MergeSort :
 https://www.withexample.com/merge-sort-using-arraylist-java-example/
@@ -19,6 +20,8 @@ Following are the commands and the instructions to run ANT on your project.
 -----------------------------------------------------------------------
 ## Instruction to clean:
 
+In the folder: "sayali_thorat_assign_4/multiThreadedMS" run the following command:
+
 ####Command: ant -buildfile src/build.xml clean
 
 Description: It cleans up all the .class files that were generated when you
@@ -26,6 +29,8 @@ compiled your code.
 
 -----------------------------------------------------------------------
 ## Instruction to compile:
+
+In the folder: "sayali_thorat_assign_4/multiThreadedMS" run the following command:
 
 ####Command: ant -buildfile src/build.xml all
 
@@ -40,11 +45,11 @@ In the folder: "sayali_thorat_assign_4/multiThreadedMS" run the following comman
 
 or
 
-####Command: ant -buildfile src/build.xml run -Dargs="2 input1.txt input2.txt output.txt 3"
+####Command: ant -buildfile src/build.xml run -Dargs="2 input1.txt input2.txt output.txt 4"
 
 or
 
-####Command: ant -buildfile src/build.xml run -Dargs="1 input1.txt output.txt 3"
+####Command: ant -buildfile src/build.xml run -Dargs="1 input1.txt output.txt 1"
 
 The first argument should be either 1,2 or 3
 The last argument of DebugValue should be between 0 to 4
@@ -63,6 +68,7 @@ Finally again I have used ArrayList for storing sorted output values which is sh
 
 I have created threads based on value of N provided in 1st cmd argument and my ThreadWorker class implements Runnable to run the threads.
 
+Synchronization is used to store output values in shared arraylist of threads in Results.
 
 
 -----------------------------------------------------------------------
