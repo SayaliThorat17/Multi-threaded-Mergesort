@@ -1,5 +1,5 @@
-# CSX42: Assignment 4
-## Name: Sayali Thorat
+# CSX42: Design Patterns - Assignment 4
+
 
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
@@ -20,7 +20,7 @@ Following are the commands and the instructions to run ANT on your project.
 -----------------------------------------------------------------------
 ## Instruction to clean:
 
-In the folder: "sayali_thorat_assign_4/multiThreadedMS" run the following command:
+In the folder: "Assign_4/multiThreadedMS" run the following command:
 
 ####Command: ant -buildfile src/build.xml clean
 
