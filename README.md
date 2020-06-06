@@ -1,5 +1,17 @@
 # CSX42: Design Patterns - Assignment 4
 
+## Architecture :
+
+-> Spawn N threads to read from the input file. Depending on the value of N, created N appropriate data structures(ArrayList) to store the input values.
+
+-> Each thread does the following:
+
+  o	Thread-M read from inputM.txt and store the values in data structure.
+
+  o	The data in the data structure is sorted (using mergesort)).
+
+  o	Thread-M writes its data into a data structure in Results.java that is shared by all the threads.
+  
 
 ## Description:
 
@@ -13,3 +25,7 @@ Finally again I have used ArrayList for storing sorted output values which is sh
 I have created threads based on value of N provided in 1st cmd argument and my ThreadWorker class implements Runnable to run the threads.
 
 Synchronization is used to store output values in shared arraylist of threads in Results.
+
+
+
+
